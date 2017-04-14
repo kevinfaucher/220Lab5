@@ -4,18 +4,17 @@
 #include <string>
 #include <cstdlib>
 using namespace std;
-
 class ZNode {
-    friend class AVLTree;
-    friend class Z_Obj;
-    Z_Obj *zip;
-    int height; // max(left->height,right->height) + 1
-    ZNode *left;
-    ZNode *right;
-    ZNode *parent;
+	friend class AVLTree;
+	friend class Z_Obj;
+	Z_Obj *zip;
+	int height; // max(left->height,right->height) + 1
+	ZNode *left;
+	ZNode *right;
+	ZNode *parent;
 public:
-    ZNode(Z_Obj *z);
-    ZNode();
-    void printZNode();
+	ZNode(Z_Obj *z);
+	ZNode();
+	void printZNode();
 };
 #endif /* ZNODE_HPP_ */

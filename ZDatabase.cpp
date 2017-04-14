@@ -19,13 +19,13 @@ ZDatabase::ZDatabase(string filename, bool flag) {
 }
 
 void ZDatabase::getZips() {
-    cout << "Enter a zip" << endl;
+    cout << "Enter a zipcode: " << endl;
     int z;
     cin >> z;
     while (z > -1) {
         ZNode *x = ztree->findZip(z, ztree->root);
         x->printZNode();
-        cout << "Enter a zip" << endl;
+        cout << "Enter a zipcode: " << endl;
         cin >> z;
     }
 }

@@ -1,20 +1,25 @@
-#ifndef ZNODE_HPP_
-#define ZNODE_HPP_
-#include "Z_Obj.hpp"
+#ifndef Z_OBJ_HPP_
+#define Z_OBJ_HPP_
 #include <string>
 #include <cstdlib>
 using namespace std;
-class ZNode {
+
+class Z_Obj {
+	friend class ZNode;
 	friend class AVLTree;
-	friend class Z_Obj;
-	Z_Obj *zip;
-	int height; // max(left->height,right->height) + 1
-	ZNode *left;
-	ZNode *right;
-	ZNode *parent;
+	int zip;
+	string city;
+	string state;
+	string abbr;
+	string county;
+	float lat;
+	float lon;
 public:
-	ZNode(Z_Obj *z);
-	ZNode();
-	void printZNode();
+	Z_Obj(int z, string ct, string st, string ab, string cnty, float la,
+			float lo);
+	void printZ();
+	// friend ostream& operator<<(ostream& os, const Z_Obj& z);
+	// If you want to override << so you can just use cout to print your Z_Objs.
+	bool lessThan(Z_Obj *z);
 };
-#endif /* ZNODE_HPP_ */
+#endif /* Z_OBJ_HPP_ */

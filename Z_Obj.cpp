@@ -1,23 +1,23 @@
-#ifndef Z_OBJ_HPP_
-#define Z_OBJ_HPP_
+#include "Z_Obj.hpp"
 #include <string>
 #include <cstdlib>
 using namespace std;
+Z_Obj::Z_Obj(int z, string ct, string st, string ab, string cnty, float la,
+		float lo){
+	zip = z;
+	city = ct;
+	state = st;
+	abbr = ab;
+	county = cnty;
+	lat = la;
+	lon = lo;
+}
+void Z_Obj::printZ(){
+	cout << zip << ": " << city << ", "
+                << state << ", " << abbr << ", " << county 
+                << ", " << lat << ", " << lon << endl;
+}
 
-class Z_Obj {
-    friend class ZNode;
-    friend class AVLTree;
-    int zip;
-    string city;
-    string state;
-    string abbr;
-    string county;
-    float lat;
-    float lon;
-public:
-    Z_Obj(int z, string ct, string st, string ab, string cnty, float la, float lo);
-    void printZ();
-    // friend ostream& operator<<(ostream& os, const Z_Obj& z);
-    // If you want to override << so you can just use cout to print your Z_Objs.
-    bool lessThan(Z_Obj *z);
-};
+bool Z_Obj::lessThan(Z_Obj *z){
+	return(z->zip < zip);
+}

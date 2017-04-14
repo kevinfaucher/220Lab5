@@ -1,19 +1,22 @@
-#ifndef ZNODE_HPP_
-#define ZNODE_HPP_
+#include "ZNode.hpp"
 #include "Z_Obj.hpp"
 #include <string>
 #include <cstdlib>
 using namespace std;
-
-class ZNode {
-    friend class AVLTree;
-    Z_Obj *zip;
-    int height; // max(left->height,right->height) + 1
-    ZNode *left;
-    ZNode *right;
-    ZNode *parent;
-public:
-    ZNode(Z_Obj *z);
-    ZNode();
-};
-#endif /* ZNODE_HPP_ */
+ZNode::ZNode(Z_Obj* z){
+	zip = z;
+	
+	left = NULL;
+	right = NULL;
+	parent = NULL;
+}
+ZNode::ZNode(){
+	zip = NULL;
+	height = 0;
+	left = NULL;
+	right = NULL;
+	parent = NULL;
+}
+void ZNode::printZNode(){
+	zip->printZ();
+}
