@@ -2,6 +2,8 @@
 #include "ZNode.hpp"
 #include <stdlib.h>
 #include <string>
+#include <iostream>
+
 using namespace std;
 
 AVLTree::AVLTree(){
@@ -15,41 +17,48 @@ AVLTree::AVLTree(bool flag){
 }
 
 //Getting identifier errors
-ZNode AVLTree::*findZip(int z, ZNode *n){
+ZNode* AVLTree::findZip(int z, ZNode *n){
 	if(z == n->zip->zip){
 		return n;
 	}
-	else if(z < n->zip){
+	else if(z < n->zip->zip){
 		return (findZip(z, n->left));
 	}
 	else{
 		return (findZip(z, n->right));
 	}
 }
-/**
+
 void AVLTree::addNode(Z_Obj *n, ZNode *r){
-	if(n->zip < r->zip){
+    if (r == NULL){
+        root = new ZNode(n);
+        cout << "Made new root with " << root->zip->zip << endl;
+        return;
+    }
+    	if(n->zip < r->zip->zip){
 		if(r->left != NULL){
 			return addNode(n, r->left);
 		}
 		else{
-			r->left = ZNode(n);
+			r->left = new ZNode(n);
+                        r->left->parent = r;
 		}
 	}
-	else if(n->zip > r->zip){
+	else if(n->zip > r->zip->zip){
 		if(r->right != NULL){
 			return addNode(n, r->right);
 		}
 		else{
-			r->right = ZNode(n);
+			r->right = new ZNode(n);
+                        r->right->parent = r;
 		}
 	}
 }
 void AVLTree::adjustBalances(ZNode *n){
-    int difference = heightDifference(n);
+    int difference = leftRightDiff(n);
     if (difference > 1)
     {
-        if (heightDifference(n->left) > 0){
+        if (leftRightDiff(n->left) > 1){
             n = rotateLeft(n);
         }
         else{
@@ -59,7 +68,7 @@ void AVLTree::adjustBalances(ZNode *n){
     }
     else if (difference < -1)
     {
-        if (heightDifference(n->right) > 0){
+        if (leftRightDiff(n->right) > 0){
         	n = rotateLeft(n);
         	n = rotateRight(n);
         }
@@ -68,18 +77,19 @@ void AVLTree::adjustBalances(ZNode *n){
         }
     }
 }
-ZNode AVLTree::*rotateRight(ZNode *n){
-    ZNode *tmp;
-    tmp = n->right;
-    n->right = tmp->left;
-    tmp->left = n;
-    return tmp;
-}
-ZNode AVLTree::*rotateLeft(ZNode *n){
+
+ZNode* AVLTree::rotateRight(ZNode *n){
     ZNode *tmp;
     tmp = n->left;
     n->left = tmp->right;
     tmp->right = n;
+    return tmp;
+}
+ZNode* AVLTree::rotateLeft(ZNode *n){
+    ZNode *tmp;
+    tmp = n->right;
+    n->right = tmp->left;
+    tmp->left = n;
     return tmp;
 }
 void AVLTree::printIO(ZNode *root){
@@ -106,18 +116,19 @@ void AVLTree::PrintPost(ZNode *root){
     PrintPost(root ->right);
     cout << root->zip << "  ";
 }
-int AVLTree::updateHeight(ZNode *n){
+
+int AVLTree::newHeight(ZNode *n){
     int height = 0;
     if (n != NULL)
     {
-        int left = height(n->left);
-        int right = height(n->right);
+        int left = height = int(n->left);
+        int right = height = int(n->right);
         int total = max(left, right);
         height = total + 1;
     }
     return height;
 }
-int AVLTree::heightDifference(ZNode *n){
-    return (updateHeight(n->left) - updateHeight(n->right));
+
+int AVLTree::leftRightDiff(ZNode *n){
+    return (newHeight(n->left) - newHeight(n->right));
 }
-*/
