@@ -23,8 +23,7 @@ public:
 	void printIO(ZNode *root); // print tree in order
 	void PrintPre(ZNode *root); // print tree in preorder
 	void PrintPost(ZNode *root); // print tree in postorder
-	int updateHeight(ZNode *n); // updates the height
-	int heightDifference(ZNode *n); // determines the difference in height of
-	// the left branch of a (sub)tree and the right branch of a (sub)tree
+	int newHeight(ZNode *n); // determines the updated hieght
+	int leftRightDiff(ZNode *n); // left right height difference
 };
 #endif /* AVLTREE_HPP_ */

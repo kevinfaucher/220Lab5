@@ -1,6 +1,8 @@
 #include "Z_Obj.hpp"
 #include <string>
 #include <cstdlib>
+#include<iostream>
+
 using namespace std;
 Z_Obj::Z_Obj(int z, string ct, string st, string ab, string cnty, float la,
 		float lo){
