@@ -32,7 +32,7 @@
                    projectFiles="false"
                    kind="IMPORTANT_FILES_FOLDER">
       <itemPath>Makefile</itemPath>
-      <itemPath>zipcodefile.txt</itemPath>
+      <itemPath>zipcodes.txt</itemPath>
       <itemPath>ziptestfile.txt</itemPath>
     </logicalFolder>
   </logicalFolder>

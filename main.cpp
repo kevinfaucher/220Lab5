@@ -16,7 +16,7 @@
 using namespace std;
 
 int main() {
-    string g = "zipcodefile.txt"; //The full file – after you have everything
+    string g = "zipcodes.txt"; //The full file – after you have everything
     // working
     string h = "ziptestfile.txt"; // for testing purposes
 
