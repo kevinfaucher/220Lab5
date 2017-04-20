@@ -20,8 +20,8 @@ int main() {
     // working
     string h = "ziptestfile.txt"; // for testing purposes
 
-    ZDatabase *zdb = new ZDatabase(h, false);
-    ZDatabase *zdb2 = new ZDatabase(h,true);
+    ZDatabase *zdb = new ZDatabase(g, false);
+    ZDatabase *zdb2 = new ZDatabase(g,true);
 
     return 0;
 }

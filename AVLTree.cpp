@@ -11,7 +11,7 @@ int count = 0;
 AVLTree::AVLTree() {
     root = NULL;
     AVLflag = false;
-    
+
 }
 
 AVLTree::AVLTree(bool flag) {
@@ -95,7 +95,7 @@ void AVLTree::printIO(ZNode *root) {
         return;
     }
     printIO(root->left);
-    cout << root->zip->zip << "  " << endl;
+    root->printZNode();
     printIO(root->right);
 }
 
@@ -103,7 +103,7 @@ void AVLTree::PrintPre(ZNode *root) {
     if (root == NULL) {
         return;
     }
-    cout << root->zip->zip << "  " << endl;
+    root->printZNode();
     PrintPre(root->left);
     PrintPre(root->right);
 }
@@ -114,7 +114,9 @@ void AVLTree::PrintPost(ZNode *root) {
     }
     PrintPost(root ->left);
     PrintPost(root ->right);
-    cout << root->zip->zip << "  " << endl;
+    root->printZNode();
+
+
 }
 
 int AVLTree::newHeight(ZNode *n) {
