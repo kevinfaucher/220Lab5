@@ -6,6 +6,8 @@
 
 using namespace std;
 
+int count = 0;
+
 AVLTree::AVLTree(){
 	root = NULL;
 	AVLflag = false;
@@ -16,18 +18,44 @@ AVLTree::AVLTree(bool flag){
         
 }
 
-//Getting identifier errors
+
 ZNode* AVLTree::findZip(int z, ZNode *n){
-	if(z == n->zip->zip){
-		return n;
-	}
-	else if(z < n->zip->zip){
-		return (findZip(z, n->left));
-	}
-	else{
-		return (findZip(z, n->right));
-	}
+    cout << "test call" << endl;
+    cout << count;
+    while (count < 5){
+        count++;
+        
+        while (z != n->zip->zip){
+            if(n->zip->zip > z){
+                cout << "test value 1" << endl;
+                return (findZip(z, n->left));
+            }
+            else if (n->zip->zip < z){
+                cout << "test value 2" << endl;
+                 return (findZip(z, n->right));
+            }
+            }
+        cout << "end loop" << endl;
+                }
+    return n;
 }
+//          cout << "test val " << endl;
+//	if(z == n->zip->zip){
+//           
+//           cout << "test val 1" << endl; 
+//		return n;
+//                
+//	}
+//	else if(n->zip->zip > z){
+//            cout << "test val 2" << endl;
+//		//return (findZip(z, n->left));
+//            return n;
+//	}
+//	else {       cout << "test val 3" << endl;
+//		//return (findZip(z, n->right));
+//            return n;
+//	}
+//}
 
 void AVLTree::addNode(Z_Obj *n, ZNode *r){
     if (r == NULL){
@@ -80,16 +108,16 @@ void AVLTree::adjustBalances(ZNode *n){
 
 ZNode* AVLTree::rotateRight(ZNode *n){
     ZNode *tmp;
-    tmp = n->left;
-    n->left = tmp->right;
-    tmp->right = n;
-    return tmp;
-}
-ZNode* AVLTree::rotateLeft(ZNode *n){
-    ZNode *tmp;
     tmp = n->right;
     n->right = tmp->left;
     tmp->left = n;
+    return tmp;
+}
+ZNode* AVLTree::rotateLeft(ZNode *n){
+   ZNode *tmp;
+    tmp = n->left;
+    n->left = tmp->right;
+    tmp->right = n;
     return tmp;
 }
 void AVLTree::printIO(ZNode *root){

@@ -13,19 +13,24 @@ ZDatabase::ZDatabase(string filename, bool flag) {
     ifile = filename;
     readFile();
     getZips();
+    cout << "In order: " << endl;
     ztree->printIO(ztree->root);
+    cout << endl << "PreOrder:" << endl;
     ztree->PrintPre(ztree->root);
+    cout << endl << "PostOrder:" << endl;
     ztree->PrintPost(ztree->root);
 }
 
 void ZDatabase::getZips() {
-    cout << "Enter a zipcode: " << endl;
+    cout << "Enter a zip" << endl;
     int z;
     cin >> z;
+   
     while (z > -1) {
-        ZNode *x = ztree->findZip(z, ztree->root);
+        ZNode *x  = ztree->findZip(z, ztree->root);
+        cout << "testing..." << endl;
         x->printZNode();
-        cout << "Enter a zipcode: " << endl;
+        cout << "Enter a zip" << endl;
         cin >> z;
     }
 }
@@ -85,6 +90,10 @@ void ZDatabase::readFile() {
             // for testing to make sure the read in file works
             Z_Obj *z = new Z_Obj(zz, city, state, abbr, county, lat, lon);
             ztree->addNode(z, ztree->root);
+
         }
     }
+
+
+
 }
