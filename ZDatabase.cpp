@@ -19,16 +19,16 @@ ZDatabase::ZDatabase(string filename, bool flag) {
     ztree->PrintPre(ztree->root);
     cout << endl << "PostOrder:" << endl;
     ztree->PrintPost(ztree->root);
+    cout << endl;
 }
 
 void ZDatabase::getZips() {
     cout << "Enter a zip" << endl;
     int z;
     cin >> z;
-   
+
     while (z > -1) {
-        ZNode *x  = ztree->findZip(z, ztree->root);
-        cout << "testing..." << endl;
+        ZNode *x = ztree->findZip(z, ztree->root);
         x->printZNode();
         cout << "Enter a zip" << endl;
         cin >> z;

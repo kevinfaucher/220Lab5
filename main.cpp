@@ -6,7 +6,7 @@
 
 /* 
  * File:   main.cpp
- * Author: Kevin
+ * Author: Kevin Faucher, Alexia Nebrao
  *
  * Created on April 12, 2017, 8:34 PM
  */
@@ -16,7 +16,7 @@
 using namespace std;
 
 int main() {
-    string g = "zipcodes.txt"; //The full file – after you have everything
+    string g = "zipcodefile.txt"; //The full file – after you have everything
     // working
     string h = "ziptestfile.txt"; // for testing purposes
 
